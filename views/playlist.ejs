@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Setlist</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+  </head>
+
+  <body>
+
+<div id="page-container">
+  <div id="content-wrap">
+      <header class="header-secondary">
+          <div id="container" class="header__container">
+              <h1>Setlist</h1>
+          </div>
+        
+        </header>
+<main>
+    <div class="container">
+        <div class="row row-flex justify-content-around">
+    <div class="col-md-5 d-flex align-items-center info-tiles">
+           <h1>
+               Top Tracks in: <span class="highlight"> <%= userCity %> </span>!
+           </h1>
+        </div>
+        <div class="col-md-5 d-flex flex-column align-items-center info-tiles">
+            <h1>Create your playlist!</h1>
+            
+            
+                <form action="/playlist" method="POST" class="form-inline mt-2">
+                  <div class="form-group">
+                    <input type="text" name="name" placeholder="Playlist name" class="form-control" required>
+                  </div>
+                 
+                    <button class="btn search-button ml-5 btn-lg btn-playlist">Create a Playlist!</button>
+                  
+                </form>
+            
+              
+              
+          
+            
+          </div>
+               
+        </div>   
+        
+        
+   </div> 
+
+
+  <div class="container">
+  <div class="row row-flex justify-content-center">
+<ul class="col-md-8 list-group-flush info-tiles">
+              <% artistPush[1].forEach(function(artist){ %>
+                  <li class="list-group-item"><%= artist %> </li>
+              <% });  %> 
+              <div class="anchor-home">
+                  <a href="/"> Go back to search!</a>  
+              </div>
+                   
+</ul> 
+
+  </div>
+</div>
+</main>
+
+
+  </div>
+  <footer id="footer">
+
+    </footer>
+</div>
+
+
+      
+      
+
+
+  
+
+
+
+    
+    <script src="\spotifyAuth.js"></script> 
+  </body>
+</html>
+
+

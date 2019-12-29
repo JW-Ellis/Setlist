@@ -91,6 +91,16 @@ html {
   font-size: 2rem;
 }
 
+#playlist-row {
+  margin: 2rem 0rem;
+}
+#playlist-row input {
+  font-size: 2rem;
+}
+#playlist-row select {
+  font-size: 2rem;
+}
+
 .date-row {
   margin: 1rem 0rem;
   font-size: 2rem;
@@ -134,6 +144,38 @@ select {
   color: #067fd6;
 }
 
+.transparent {
+  position: absolute;
+  height: 100%;
+  width: 65%;
+  left: 17.5%;
+  background-color: #000000ab;
+}
+
+.search-result {
+  margin-top: 10rem;
+}
+.search-result h2 {
+  text-transform: uppercase;
+  font-size: 7rem;
+  letter-spacing: 2rem;
+  color: #067fd6;
+  text-shadow: 0.2rem 0.2rem 0 #d547d9;
+  font-weight: 100;
+  font-family: "vcr_osd_monoregular";
+  z-index: 1;
+  margin-bottom: 3rem;
+}
+.search-result li {
+  font-size: 1.8rem;
+  letter-spacing: 0.4rem;
+  text-transform: uppercase;
+}
+
+.playlist {
+  padding-top: 1rem;
+}
+
 .text-adjust {
   letter-spacing: 1.7rem;
 }
@@ -146,7 +188,7 @@ select {
   color: #d547d9;
 }
 
-#page-container {
+#page-containerPrimary {
   position: relative;
   min-height: 100vh;
   background-image: url("../img/home.jpg");
@@ -159,6 +201,16 @@ select {
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+#page-containerSecondary {
+  position: relative;
+  min-height: 100vh;
+  background-image: url("../img/search.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #AA076B;
+}
+
 #content-wrap {
   padding-bottom: 6rem;
 }
@@ -169,12 +221,13 @@ select {
   padding: 0;
   color: #eeeeee;
   font-size: 1.5rem;
-}
-.container h2 {
-  color: #eeeeee;
-  font-weight: bold;
-  font-size: 2.2rem;
-  text-align: center;
+  /* 
+      h2{
+          color: #eeeeee;
+          font-weight: bold;
+          font-size: 2.2rem;
+          text-align: center;
+      } */
 }
 
 .info-tiles {
@@ -204,14 +257,6 @@ select {
 .list-group-item {
   background-color: transparent;
   font-size: 1.6rem;
-}
-
-.anchor-home {
-  padding-top: 1rem;
-}
-.anchor-home a {
-  color: #eeeeee;
-  font-weight: bold;
 }
 
 .header {

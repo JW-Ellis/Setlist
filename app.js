@@ -102,7 +102,7 @@ app.get('/playlist', (req, res) =>{
     });   
 
 app.post('/playlist', redirectLoggedout, (req, res) =>{
-    let playlistName = req.body.name; 
+    let playlistName = req.body.playlist; 
     let token = req.session.userToken; 
 
     spotifyApp.spotifyPlaylist(token, trackIDS, playlistName); 

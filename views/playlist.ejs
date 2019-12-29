@@ -10,78 +10,64 @@
   </head>
 
   <body>
+    <div id="page-containerSecondary">
+      <div class="transparent"></div>
+      <div id="content-wrap">
 
-<div id="page-container">
-  <div id="content-wrap">
-      <header class="header-secondary">
+<header class="header">
           <div id="container" class="header__container">
+            <div class="d-flex flex-row align-items-center justify-content-center">
+              <a href="/">Search</a>
               <h1>Setlist</h1>
+              <p>Logged in</p>
+             </div>
           </div>
         
         </header>
+
 <main>
-    <div class="container">
-        <div class="row row-flex justify-content-around">
-    <div class="col-md-5 d-flex align-items-center info-tiles">
-           <h1>
-               Top Tracks in: <span class="highlight"> <%= userCity %> </span>!
-           </h1>
-        </div>
-        <div class="col-md-5 d-flex flex-column align-items-center info-tiles">
-            <h1>Create your playlist!</h1>
-            
-            
-                <form action="/playlist" method="POST" class="form-inline mt-2">
-                  <div class="form-group">
-                    <input type="text" name="name" placeholder="Playlist name" class="form-control" required>
-                  </div>
-                 
-                    <button class="btn search-button ml-5 btn-lg btn-playlist">Create a Playlist!</button>
-                  
-                </form>
-            
-              
-              
-          
-            
-          </div>
-               
-        </div>   
-        
-        
-   </div> 
+     <div class="container">   
+       <div class="d-flex flex-column align-items-center search-result">
+        <h2>
+          <%= userCity %>
+      </h2>
+        <ul class="col-md-6 list-group-flush">
+                      <% artistPush[1].forEach(function(artist){ %>
+                          <li class="d-flex justify-content-between list-group-item"><span class="track-left"><%= artist[0] %></span>  <span class="track-right"><%= artist[1] %></span></li>
+                      <% });  %> 
+                           
+        </ul> 
 
+        <form method="POST" action="/playlist" class="d-flex flex-column col-md-5 search-form">
 
-  <div class="container">
-  <div class="row row-flex justify-content-center">
-<ul class="col-md-8 info-tiles">
-              <% artistPush[1].forEach(function(artist){ %>
-                  <li><%= artist %> </li>
-              <% });  %> 
-              <div class="anchor-home">
-                  <a href="/"> Go back to search!</a>  
-              </div>
-                   
-</ul> 
-
-  </div>
-</div>
-</main>
-
-
-  </div>
-  <footer id="footer">
-
-    </footer>
-</div>
-
-
-      
-      
-
-
+          <div id="playlist-row" class="d-flex justify-content-center">
   
+            <div class="d-flex flex-column col-md-6 zip">
+              <label for="inputPlaylist">Playlist Name</label>
+              <input type="text" name="playlist" class="form-control-sm" required>
+            </div>
+  
+            <div class="d-flex flex-column col-md-6 justify-content-end">
+              <button type="submit" class="btn search-button btn-lg">Export Playlist</button>
+          </div>
+          </div>
 
+          </form>
+
+
+          </div>
+  </div> 
+
+
+</main>
+      </div>
+
+      <footer id="footer">
+
+        </footer>
+    </div>
+
+      
 
 
     

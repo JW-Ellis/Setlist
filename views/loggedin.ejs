@@ -14,73 +14,82 @@
     <title>Setlist</title>
 </head>
 <body>
-<div id="page-container">
-  <div id="content-wrap">
-<header class="header">
-    <div id="container" class="header__container">
-        <h1>Setlist</h1>
+  <div id="page-container">
+      <div id="content-wrap">
+        
+  <header class="header">
+  <div id="container" class="header__container">
+    <div class="d-flex flex-row align-items-center justify-content-center">
+     <a href="/">Search</a>
+      <h1>Setlist</h1>
+      <p>Logged in as: <%= userID %></p>
     </div>
+     
+  </div>
+
 </header>
 
-<main>
-    <div class="container">
-      <div class="row row-flex justify-content-around">
-        <div class="col-md-5 info-tiles">
-          <div class="content">
-              <h2>Create a  SETLIST</h2>
-              <p>Setlist finds the headliners in your area and aggregates their most popular Spotify tracks. </p>
-          </div>
-        </div>
 
-     <div class="col-md-5 info-tiles">
-       <div class="content">
-          <h2>Logged in as: <%= userID %>! </h2>
-          <p>What are you waiting for? Find your band. Make a list.</p>
-          
-       </div>
-        </div>
-      </div>
-      </div>
+<main>
+<div class="container">
+  <div class="d-flex  flex-column align-items-center justify-content-center">
+
+    <div class="col-md-5 info-tiles align-items-center text-center">
+      
+          <h2><span class="text-adjust">Create </span>a Setlist</h2>
+          <p>Find headliners performing in your area and aggregate their most popular tracks to your Spotify account </p>
+      
+    </div>
+
+
+
     
-    <div class="container">
-    <form id= "search-form" method="GET" action="/search">
-        <div class="d-flex align-items-center px-4 py-4 text-center form-row">
-          <div class="form-group col">
-            <label class="pr-2" for="inputZip"><span class="highlight">Zipcode:</span></label>
+      
+        <form method="GET" action="/search" class="d-flex flex-column col-md-5 search-form">
+        <div id="zip-row" class="d-flex justify-content-center zip-row">
+
+          <div class="d-flex flex-column col-md-5 zip">
+            <label class="" for="inputZip">Zip</label>
             <input type="text" placeholder="Ex: 80203" name="zip" class="form-control-sm" id="inputZip" required>
           </div>
-    
-          <div class="form-group col">
-              <label class="pr-2" for="inputSong"><span class="highlight">Top Songs:</span></label>
-              <select id="inputSong" class="form-control-sm" name="topSong">
-                <option value="1">1 Song</option>
-                <option value="2">2 Songs</option>
-                <option value="3" selected>3 Songs</option>
-                </select>
-          </div>
-    
-          <div class="form-group col">
-             
-                <label class="pr-2" for="date"><span class="highlight"> Select a Date: </span></label>
-                <input type="text" id="date" name="date" required>
-               
-            </div>
-    
-            <div class="form-group col">
-                <button type="submit" class="btn search-button btn-lg btn-primary">Search!</button>
-            </div>
+
+          <div class="d-flex flex-column col-md-5">
+            <label class="" for="inputSong">Number of Songs</label>
+            <select id="inputSong" class="form-control-sm" name="topSong">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3" selected>3</option>
+              </select>
         </div>
+        </div>
+        
+  
+        
+  
+        <div class="d-flex flex-column col-md-11 date-row">
+           
+              <label class="" for="date">Date</label>
+              <input type="text" id="date" name="date" required>
+             
+          </div>
+  
+          <div class="d-flex flex-column col-md-11 search-row">
+              <button type="submit" class="btn search-button btn-lg">Search</button>
+          </div>
+        </form>
+      
+  
     
-      </form>
-    
-    </div>
-    </main>
-
   </div>
-  <footer id="footer">
+  </div>
 
-    </footer>
-</div>
 
+</main>
+        </div>
+<footer id="footer">
+
+</footer>
+  </div>
+  
 </body>
 </html>

@@ -11,41 +11,63 @@ html {
   font-size: 62.5%;
 }
 
+@font-face {
+  font-family: "vcr_osd_monoregular";
+  src: url("../fonts/vcr_osd_mono_1.001-webfont.woff2") format("woff2"), url("../fonts/vcr_osd_mono_1.001-webfont.woff") format("woff"), url("../fonts/VCR_OSD_MONO_1.001") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "cutiveregular";
+  src: url("../fonts/cutive-regular-webfont.woff2") format("woff2"), url("../fonts/cutive-regular-webfont.woff") format("woff"), url("../fonts/Cutive-Regular");
+  font-weight: normal;
+  font-style: normal;
+}
 .highlight {
   background: black;
   color: white;
 }
 
-.spotify {
-  display: flex;
-  justify-content: center;
-  font-family: "Montserrat", sans-serif;
+/* .spotify{
+    display: flex;
+    justify-content: center;
+    font-family: $container-font;
+
 }
 
-.spotify-button {
-  background-color: #1DB954;
-  border-radius: 0.75rem;
-  border: black solid 0.2rem;
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-.spotify-button:focus, .spotify-button:hover {
-  background-color: #1ED760;
-  transform: translateY(-0.1rem);
-  border: black solid 0.2rem;
-  box-shadow: 1px 5px 3px rgba(0, 0, 0, 0.377);
-}
+.spotify-button{
+    background-color: #1DB954;
+    border-radius: .75rem;
+    border: black solid .2rem;
+    font-size: 1.3rem;
+    font-weight: bold;
 
+    &:focus,
+    &:hover{
+        background-color: #1ED760;
+        transform: translateY(-.1rem);
+        border: black solid .2rem;
+        box-shadow: 1px 5px 3px rgba(0, 0, 0, 0.377);
+    }  
+} */
 .search-button {
-  font-weight: bold;
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   border: black solid 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4rem;
+  padding: 1rem 0rem;
+  background: #067fd6;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 .search-button:focus, .search-button:hover {
-  background-color: #3f9cff;
-  transform: translateY(-0.1rem);
+  background-color: #d547d9;
+  transform: translate(0.1rem, -0.1rem);
   border: black solid 0.2rem;
-  box-shadow: 1px 5px 3px rgba(0, 0, 0, 0.377);
+}
+.search-button:active {
+  background-color: #f281f6;
+  transform: translate(-0.1rem, 0.1rem);
 }
 
 .btn-playlist {
@@ -55,23 +77,94 @@ html {
   background-color: #f2d34c;
 }
 
+.zip {
+  right: 1rem;
+}
+
+#zip-row {
+  margin: 2rem 0rem;
+}
+#zip-row input {
+  font-size: 2rem;
+}
+#zip-row select {
+  font-size: 2rem;
+}
+
+.date-row {
+  margin: 1rem 0rem;
+  font-size: 2rem;
+}
+
+.search-row {
+  margin-top: 4rem;
+}
+
+.search-form {
+  color: #067fd6;
+  font-size: 1.5rem;
+  letter-spacing: 0.4rem;
+  font-weight: bold;
+}
+.search-form label {
+  text-transform: uppercase;
+}
+
+input {
+  background: transparent;
+  color: #067fd6;
+  border: 2px solid #067fd6;
+}
+
+option {
+  background: #067fd6;
+  color: #292523;
+  text-align: center;
+}
+
+::placeholder {
+  color: #067fd6;
+  opacity: 1;
+  font-size: 1.5rem;
+}
+
+select {
+  background: transparent;
+  border: 2px solid #067fd6;
+  color: #067fd6;
+}
+
+.text-adjust {
+  letter-spacing: 1.7rem;
+}
+
+.track-left {
+  color: #067fd6;
+}
+
+.track-right {
+  color: #d547d9;
+}
+
 #page-container {
   position: relative;
   min-height: 100vh;
-  background: #AA076B;
+  background-image: url("../img/home.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #AA076B;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(45deg, #61045F, #AA076B);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(45deg, #61045F, #AA076B);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 #content-wrap {
-  padding-bottom: 10rem;
+  padding-bottom: 6rem;
 }
 
 .container {
-  font-family: "Montserrat", sans-serif;
+  font-family: "vcr_osd_monoregular";
   margin: 3rem auto;
   padding: 0;
   color: #eeeeee;
@@ -84,24 +177,24 @@ html {
   text-align: center;
 }
 
-#search-form {
-  background-color: #290628;
-  box-shadow: 3px 8px 5px rgba(0, 0, 0, 0.377);
-  border-radius: 0.75rem;
-}
-
 .info-tiles {
-  background-color: #067fd6;
-  padding: 1rem;
-  border-radius: 0.75rem;
-  box-shadow: 3px 8px 5px rgba(0, 0, 0, 0.377);
-  border: black solid 0.25rem;
+  color: #067fd6;
+  font-family: "vcr_osd_monoregular";
+  text-align: left;
+  margin-top: 21rem;
+}
+.info-tiles h2 {
+  text-transform: uppercase;
+  font-size: 7rem;
+  letter-spacing: 2.7rem;
+  color: #067fd6;
+  text-shadow: 0.2rem 0.2rem 0 #d547d9;
+  font-weight: 100;
+  font-family: "vcr_osd_monoregular";
 }
 .info-tiles p {
-  text-align: center;
-}
-.info-tiles:first-child {
-  margin-right: 2rem;
+  font-size: 1.6rem;
+  text-transform: uppercase;
 }
 
 .col {
@@ -109,7 +202,7 @@ html {
 }
 
 .list-group-item {
-  background-color: #067fd6;
+  background-color: transparent;
   font-size: 1.6rem;
 }
 
@@ -122,17 +215,33 @@ html {
 }
 
 .header {
-  background-color: #292523cc;
-  font-family: "Abril Fatface", cursive;
+  font-family: "vcr_osd_monoregular";
   position: relative;
-  height: 14rem;
-  color: white;
-  padding: 2rem;
+  height: 4rem;
+  color: #067fd6;
+  text-transform: uppercase;
+  padding: 2.3rem;
   text-align: center;
 }
 .header h1 {
-  font-size: 8rem;
-  padding-top: 2rem;
+  font-size: 4.4rem;
+  letter-spacing: 0.4rem;
+  text-shadow: 0.2rem 0.2rem 0 #d547d9;
+  margin: 0rem 4rem;
+}
+.header p {
+  font-size: 1.8rem;
+  margin-top: 0.8rem;
+  letter-spacing: 0.4rem;
+}
+.header a {
+  font-size: 1.8rem;
+  margin-top: 0.8rem;
+  letter-spacing: 0.4rem;
+}
+.header a:focus, .header a:hover {
+  color: #d547d9;
+  text-decoration: none;
 }
 
 .header__container {
@@ -141,7 +250,7 @@ html {
 
 .header-secondary {
   background-color: #292523cc;
-  font-family: "Abril Fatface", cursive;
+  font-family: "vcr_osd_monoregular";
   position: relative;
   height: 7rem;
   color: white;
@@ -154,17 +263,11 @@ html {
   padding-top: 0.25rem;
 }
 
-.header__container {
-  height: auto;
-}
-
 #footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 10rem;
-  background-color: #292523;
-  clip-path: polygon(80% 0, 20% 0, 0 40%, 0 100%, 100% 100%, 100% 40%);
+  height: 6rem;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -1,4 +1,4 @@
-var SpotifyWebApi = require('spotify-web-api-node');
+const SpotifyWebApi = require('spotify-web-api-node');
 require('dotenv').config();
 
 var spotifyApi = new SpotifyWebApi({
@@ -41,7 +41,7 @@ let artistTracks = [];
 
            trackParse.slice(0, num).forEach((track) =>{
              trackIds.push(track.id); 
-             artistTracks.push(track.artists[0].name + ' - ' + track.name); 
+             artistTracks.push([track.artists[0].name, track.name]); 
            }); 
            
         }
@@ -49,6 +49,7 @@ let artistTracks = [];
           console.log('Top Track Error:', e.message); 
         }
       })); 
+      console.log(artistTracks)
      return [trackIds, artistTracks]; 
 
   }

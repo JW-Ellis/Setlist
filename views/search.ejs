@@ -42,7 +42,7 @@
   <div class="row row-flex justify-content-center">
 <ul class="col-md-8 list-group-flush info-tiles">
               <% artistPush[1].forEach(function(artist){ %>
-                  <li class="list-group-item"><%= artist %> </li>
+                  <li class="d-flex justify-content-between list-group-item"><span class="track-left"><%= artist[0] %></span>  <span class="track-right"><%= artist[1] %></span></li>
               <% });  %> 
               <div class="anchor-home">
                   <a href="/"> Go back to search!</a>  

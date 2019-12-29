@@ -44,6 +44,14 @@ const redirectLoggedin = (req, res, next) => {
     }
 }; 
 
+const redirectLoggedout = (req, res, next) => {
+    if(req.session.userToken){
+      next(); 
+    } else{
+      res.redirect('/'); 
+    }
+}
+
  app.use(express.static('public'))
    .use(cors())
    .use(express.urlencoded({extended: true}))
@@ -68,7 +76,7 @@ app.get('/', redirectLoggedin, (req, res) =>{
     res.render('index');  
 }); 
 
-app.get('/loggedin',  async(req, res) =>{ 
+app.get('/loggedin', redirectLoggedout,  async(req, res) =>{ 
     let userID; 
 
     try{
@@ -93,7 +101,7 @@ app.get('/playlist', (req, res) =>{
     res.redirect('/');  
     });   
 
-app.post('/playlist', (req, res) =>{
+app.post('/playlist', redirectLoggedout, (req, res) =>{
     let playlistName = req.body.name; 
     let token = req.session.userToken; 
 

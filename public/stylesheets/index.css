@@ -52,7 +52,6 @@ html {
 } */
 .search-button {
   border-radius: 0.5rem;
-  border: black solid 0.2rem;
   text-transform: uppercase;
   letter-spacing: 0.4rem;
   padding: 1rem 0rem;
@@ -62,8 +61,6 @@ html {
 }
 .search-button:focus, .search-button:hover {
   background-color: #d547d9;
-  transform: translate(0.1rem, -0.1rem);
-  border: black solid 0.2rem;
 }
 .search-button:active {
   background-color: #f281f6;
@@ -103,6 +100,9 @@ html {
 
 .date-row {
   margin: 1rem 0rem;
+  font-size: 1.5rem;
+}
+.date-row input {
   font-size: 2rem;
 }
 
@@ -160,7 +160,7 @@ select {
   font-size: 7rem;
   letter-spacing: 2rem;
   color: #067fd6;
-  text-shadow: 0.2rem 0.2rem 0 #d547d9;
+  text-shadow: 0.3rem 0.2rem 0 #d547d9;
   font-weight: 100;
   font-family: "vcr_osd_monoregular";
   z-index: 1;
@@ -182,10 +182,13 @@ select {
 
 .track-left {
   color: #067fd6;
+  max-width: 50%;
 }
 
 .track-right {
   color: #d547d9;
+  max-width: 50%;
+  text-align: right;
 }
 
 #page-containerPrimary {
@@ -196,9 +199,6 @@ select {
   background-repeat: no-repeat;
   background-position: center;
   background-color: #AA076B;
-  /* fallback for old browsers */
-  /* Chrome 10-25, Safari 5.1-6 */
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 #page-containerSecondary {
@@ -221,13 +221,6 @@ select {
   padding: 0;
   color: #eeeeee;
   font-size: 1.5rem;
-  /* 
-      h2{
-          color: #eeeeee;
-          font-weight: bold;
-          font-size: 2.2rem;
-          text-align: center;
-      } */
 }
 
 .info-tiles {
@@ -241,7 +234,7 @@ select {
   font-size: 7rem;
   letter-spacing: 2.7rem;
   color: #067fd6;
-  text-shadow: 0.2rem 0.2rem 0 #d547d9;
+  text-shadow: 0.3rem 0.2rem 0 #d547d9;
   font-weight: 100;
   font-family: "vcr_osd_monoregular";
 }

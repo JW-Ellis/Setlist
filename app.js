@@ -70,7 +70,7 @@ app.use(
     cookie: {
       maxAge: SESS_LIFETIME,
       sameSite: true,
-      secure: false,
+      secure: true,
     },
   })
 );

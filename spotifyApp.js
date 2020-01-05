@@ -47,7 +47,7 @@ exports.spotifyTracksids = async function main(array, num) {
         }
       })
     );
-    console.log(artistTracks);
+    
     return [trackIds, artistTracks];
   } catch (e) {
     console.log('Main Error:', e.message);

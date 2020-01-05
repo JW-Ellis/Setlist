@@ -15,11 +15,12 @@ const SESS_LIFETIME = 3600000;
 let trackIDS;
 require('dotenv').config();
 
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs')
+   .set('trust proxy', 1); //Trust first proxy for express sessions 
 
 const client_id = process.env.SPOTIFY_ID; // Client ID
 const client_secret = process.env.SPOTIFY_SEC; // Secret
-const redirect_uri = 'https://agile-sea-19609.herokuapp.com/callback'; // Redirect uri
+const redirect_uri = 'http://localhost:8000/callback'; // Redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -125,7 +126,7 @@ app.get('/search', async (req, res) => {
     const fMonth = fSplit[0];
     const fDay = fSplit[1];
 
-    console.log(userDate);
+    
 
     // Pull coordinate data
     const zipData = zipcodes.lookup(userZip);

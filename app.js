@@ -82,21 +82,16 @@ app.get('/', redirectLoggedin, (req, res) => {
   res.render('index');
 });
 
-app.get('/loggedin', redirectLoggedout, async (req, res) => {
-  let userID;
-
-  try {
-    userID = await spotifyApp.spotifyMe(req.session.userToken);
-  } catch (e) {
-    console.log('User ID :', e.message);
-  }
+app.get('/loggedin', redirectLoggedout, (req, res) => {
 
  
 
-  res.render('loggedin', { userID });
+  res.render('loggedin');
 });
 
 app.get('/playlist', (req, res) => {
+
+
   res.redirect('/');
 });
 
@@ -139,11 +134,11 @@ app.get('/search', async (req, res) => {
     const skCity_response = await fetch(skCity_url);
     const skCitydata = await skCity_response.json();
     const cityId = skCitydata.resultsPage.results.location[0].metroArea.id;
-    // console.log(cityId);
+   
     const skEvent_url = `https://api.songkick.com/api/3.0/metro_areas/${cityId}/calendar.json?min_date=${fYear}-${fMonth}-${fDay}&max_date=${fYear}-${fMonth}-${fDay}&apikey=${sk_key}`;
     const skEvent_response = await fetch(skEvent_url);
     const artistData = await skEvent_response.json();
-    // console.log(artistData.resultsPage.results.event.length);
+    
 
     // use JSON artistData to make artist array
     const artistsRaw = artistArray(artistData);
@@ -253,12 +248,9 @@ app.get('/callback', function(req, res) {
 
         tokenSet();
 
-        // Have the option to pass access token to hash
-        if (req.session.userToken) {
-          res.redirect('/loggedin');
-        } else {
-          res.redirect('/');
-        }
+        // Send client to loggedin page after token is set
+        res.render('loggedin');
+
       } else {
         res.redirect(
           `/#${querystring.stringify({

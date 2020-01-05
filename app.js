@@ -76,7 +76,7 @@ app.use(
 );
 
 app.get('/', redirectLoggedin, (req, res) => {
-  console.log(trackIDS);
+  
 
   res.render('index');
 });
@@ -90,7 +90,7 @@ app.get('/loggedin', redirectLoggedout, async (req, res) => {
     console.log('User ID :', e.message);
   }
 
-  console.log(userID);
+ 
 
   res.render('loggedin', { userID });
 });
@@ -162,7 +162,7 @@ app.get('/search', async (req, res) => {
           );
         }
       }
-      console.log(artist);
+      
       return artist;
     }
 
@@ -180,7 +180,7 @@ app.get('/search', async (req, res) => {
     }
   }
 
-  console.log(trackIDS);
+ 
 
   if (req.session.userToken) {
     res.render('playlist', { artistPush, userCity });
@@ -209,13 +209,11 @@ app.get('/login', function(req, res) {
 app.get('/callback', function(req, res) {
   // your application requests refresh and access tokens
   // after checking the state parameter
-
+ 
   const code = req.query.code || null;
   const state = req.query.state || null;
   const storedState = req.cookies ? req.cookies[stateKey] : null;
-  // console.log(req.session);
-  // console.log(req.sessionID);
-
+  
   if (state === null || state !== storedState) {
     res.redirect(
       `/#${querystring.stringify({
@@ -271,4 +269,4 @@ app.get('/callback', function(req, res) {
   }
 });
 
-app.listen(3000, () => console.log('listening at 3000'));
+app.listen(process.env.PORT, () => console.log('listening at 8000'));

@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'vcr_osd_monoregular';
+    src: url('../fonts/vcr_osd_mono_1.001-webfont.woff2') format('woff2'),
+         url('../fonts/vcr_osd_mono_1.001-webfont.woff') format('woff'),
+         url('../fonts/VCR_OSD_MONO_1.001') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'cutiveregular';
+    src: url('../fonts/cutive-regular-webfont.woff2') format('woff2'),
+         url('../fonts/cutive-regular-webfont.woff') format('woff'),
+         url('../fonts/Cutive-Regular'); 
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+//FONTS
+$title-font: 'vcr_osd_monoregular';
+$container-font: 'vcr_osd_monoregular'; 
+$container-fontSize: 1.5rem; 
+
+.highlight {
+    background: black; 
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+

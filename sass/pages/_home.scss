@@ -1,0 +1,29 @@
+
+#page-containerPrimary{
+    position: relative;
+    min-height: 100vh;
+    background-image: url("../img/home.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    background-color: #AA076B;
+   
+}
+
+#page-containerSecondary {
+    position: relative;
+    min-height: 100vh;
+    background-image: url("../img/search.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #AA076B;
+}
+
+#content-wrap {
+    padding-bottom: 6rem;
+}
+
+
+

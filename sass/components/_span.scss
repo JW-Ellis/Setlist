@@ -1,0 +1,14 @@
+.text-adjust {
+    letter-spacing: 1.7rem;
+}
+
+.track-left {
+    color: $color-primary;
+    max-width: 50%;
+}
+
+.track-right {
+    color: $color-secondary;
+    max-width: 50%;
+    text-align: right;
+}

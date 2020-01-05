@@ -1,0 +1,114 @@
+.zip {
+    right: 1rem;
+    
+    
+}
+
+#zip-row {
+    margin: 2rem 0rem;
+
+    input {
+        font-size: 2rem;
+    }
+
+    select {
+        font-size: 2rem;
+    }
+}
+
+#playlist-row {
+    margin: 2rem 0rem;
+
+    input {
+        font-size: 2rem;
+    }
+
+    select {
+        font-size: 2rem;
+    }
+}
+
+.date-row {
+    margin: 1rem 0rem;
+    font-size: 1.5rem;
+        
+        input {
+            font-size: 2rem;
+        }
+}
+
+.search-row {
+    margin-top: 4rem;
+}
+
+.search-form{
+    color: $color-primary;
+    font-size: 1.5rem;
+    letter-spacing: .4rem;
+    font-weight: bold;
+
+    label {
+        text-transform: uppercase;
+    }
+    
+}; 
+
+input {
+    background: transparent;
+    color: $color-primary;
+    border: 2px solid $color-primary;
+}
+
+option {
+    background: $color-primary;
+    color: #292523;
+    text-align: center;
+}
+
+::placeholder {
+    color: $color-primary;
+    opacity: 1;
+    font-size: 1.5rem;
+}
+
+select {
+    background: transparent;
+    border: 2px solid $color-primary;
+    color: $color-primary;
+}
+
+.transparent {
+    position: absolute;
+    height: 100%;
+    width: 65%;
+    left: 17.5%;
+    background-color: #000000ab;
+}
+
+.search-result {
+    margin-top: 10rem;
+
+    h2 {
+        text-transform: uppercase;
+        font-size: 7rem;
+        letter-spacing: 2rem;
+        color: $color-primary;
+        text-shadow: .3rem .2rem 0 $color-secondary;
+        font-weight: 100;
+        font-family: $title-font;
+        z-index: 1;
+        margin-bottom: 3rem;
+    }
+
+    li {
+        font-size: 1.8rem;
+        letter-spacing: .4rem;
+        text-transform: uppercase;
+    }
+}
+
+.playlist {
+    padding-top: 1rem;
+
+    
+}

@@ -1,0 +1,65 @@
+.header {
+    font-family: $title-font;
+    position: relative;
+    height: 4rem; 
+    color: $color-primary;
+    text-transform: uppercase;
+    padding: 2.3rem;
+    text-align: center;
+    h1 {
+        font-size: 4.4rem;
+        letter-spacing: .4rem;
+        text-shadow: .2rem .2rem 0 $color-secondary;
+        margin: 0rem 4rem;
+        //padding-top: 2rem;
+    }
+
+    p {
+        font-size: 1.8rem;
+        margin-top: .8rem;
+        letter-spacing: .4rem;
+    }
+
+    a {
+        font-size: 1.8rem;
+        margin-top: .8rem;
+        letter-spacing: .4rem;
+
+        &:focus,
+        &:hover{
+        color: $color-secondary;
+        text-decoration: none;
+        
+        
+    }
+    }
+}
+
+.header__container{
+    height: auto;
+    
+}
+
+.header-secondary {
+    background-color: #292523cc; 
+
+
+    font-family: $title-font;
+
+
+    position: relative;
+    height: 7rem; 
+    color: white;
+    padding: 2rem;
+    padding-left: 8rem;
+    text-align: left;
+    h1 {
+        font-size: 6rem;
+        padding-top: .25rem;
+    }
+}
+
+
+
+
+

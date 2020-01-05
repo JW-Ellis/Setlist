@@ -1,29 +1,5 @@
-/* .spotify{
-    display: flex;
-    justify-content: center;
-    font-family: $container-font;
-    
-}
-
-.spotify-button{
-    background-color: #1DB954;
-    border-radius: .75rem;
-    border: black solid .2rem;
-    font-size: 1.3rem;
-    font-weight: bold;
-
-    &:focus,
-    &:hover{
-        background-color: #1ED760;
-        transform: translateY(-.1rem);
-        border: black solid .2rem;
-        box-shadow: 1px 5px 3px rgba(0, 0, 0, 0.377);
-    }  
-} */
 
 .search-button{
-    //font-weight: bold;
-    //font-family: $container-font;
     border-radius: .5rem;
     text-transform: uppercase;
     letter-spacing: .4rem;

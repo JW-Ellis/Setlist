@@ -19,7 +19,7 @@ app.set('view engine', 'ejs');
 
 const client_id = process.env.SPOTIFY_ID; // Client ID
 const client_secret = process.env.SPOTIFY_SEC; // Secret
-const redirect_uri = 'http://localhost:3000/callback'; // Redirect uri
+const redirect_uri = 'https://agile-sea-19609.herokuapp.com/callback'; // Redirect uri
 
 /**
  * Generates a random string containing numbers and letters

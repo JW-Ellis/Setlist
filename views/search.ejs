@@ -1,63 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Setlist</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/index.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/stylesheets/index.css" />
   </head>
 
   <body>
     <div id="page-containerSecondary">
       <div class="transparent"></div>
       <div id="content-wrap">
-
-<header class="header">
+        <header class="header">
           <div id="container" class="header__container">
-            <div class="d-flex flex-row align-items-center justify-content-center">
+            <div
+              class="d-flex flex-row align-items-center justify-content-center"
+            >
               <a href="/">Search</a>
-               <h1>Setlist</h1>
-               <a href="/login">Log in</a>
-             </div>
+              <h1>Setlist</h1>
+              <a href="/login">Log in</a>
+            </div>
           </div>
-        
         </header>
 
-<main>
-     <div class="container">   
-       <div class="d-flex flex-column align-items-center search-result">
-        <h2>
-          <%= userCity %>
-      </h2>
-        <ul class="col-md-6 list-group-flush">
-                      <% artistPush[1].forEach(function(artist){ %>
-                          <li class="d-flex align-items-center justify-content-between list-group-item"><span class="track-left"><%= artist[0] %></span>  <span class="track-right"><%= artist[1] %></span></li>
-                      <% });  %> 
-                           
-        </ul> 
-
-
-
+        <main>
+          <div class="container">
+            <div class="d-flex flex-column align-items-center search-result">
+              <h2>
+                <%= userCity %>
+              </h2>
+              <ul class="col-md-6 list-group-flush">
+                <% artistPush[1].forEach(function(artist){ %>
+                <li
+                  class="d-flex align-items-center justify-content-between list-group-item"
+                >
+                  <span class="track-left"><%= artist[0] %></span>
+                  <span class="track-right"><%= artist[1] %></span>
+                </li>
+                <% }); %>
+              </ul>
+            </div>
           </div>
-  </div> 
-
-
-</main>
+        </main>
       </div>
 
-      <footer id="footer">
-
-        </footer>
+      <footer id="footer"></footer>
     </div>
 
-      
-
-
-    
-    <script src="\spotifyAuth.js"></script> 
+    <script src="\spotifyAuth.js"></script>
   </body>
 </html>
-
-

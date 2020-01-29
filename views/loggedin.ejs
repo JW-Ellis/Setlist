@@ -1,95 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="/stylesheets/index.css">
-    <script src="\client.js"></script> 
-    
+    <link rel="stylesheet" href="/stylesheets/index.css" />
+    <script src="\client.js"></script>
+
     <title>Setlist</title>
-</head>
-<body>
-  <div id="page-containerPrimary">
+  </head>
+  <body>
+    <div id="page-containerPrimary">
       <div id="content-wrap">
-        
-  <header class="header">
-  <div id="container" class="header__container">
-    <div class="d-flex flex-row align-items-center justify-content-center">
-     <a href="/">Search</a>
-      <h1>Setlist</h1>
-      <p class="track-right">Logged in</p>
+        <header class="header">
+          <div id="container" class="header__container">
+            <div
+              class="d-flex flex-row align-items-center justify-content-center"
+            >
+              <a href="/">Search</a>
+              <h1>Setlist</h1>
+              <p class="track-right">Logged in</p>
+            </div>
+          </div>
+        </header>
+
+        <main>
+          <div class="container">
+            <div
+              class="d-flex flex-column align-items-center justify-content-center"
+            >
+              <div class="col-md-5 info-tiles align-items-center text-center">
+                <h2><span class="text-adjust">Create </span>a Setlist</h2>
+                <p>
+                  Find headliners performing in your area and aggregate their
+                  most popular tracks to your Spotify account
+                </p>
+              </div>
+
+              <form
+                method="GET"
+                action="/search"
+                class="d-flex flex-column col-md-5 search-form"
+              >
+                <div id="zip-row" class="d-flex justify-content-center">
+                  <div class="d-flex flex-column col-md-5 zip">
+                    <label class="" for="inputZip">Zip</label>
+                    <input
+                      type="text"
+                      placeholder="Ex: 80203"
+                      name="zip"
+                      class="form-control-sm"
+                      id="inputZip"
+                      required
+                    />
+                  </div>
+
+                  <div class="d-flex flex-column col-md-5">
+                    <label class="" for="inputSong">Number of Songs</label>
+                    <select
+                      id="inputSong"
+                      class="form-control-sm"
+                      name="topSong"
+                    >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3" selected>3</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="d-flex flex-column col-md-11 date-row">
+                  <label class="" for="date">Date</label>
+                  <input
+                    type="text"
+                    id="date"
+                    name="date"
+                    class="form-control-sm"
+                    required
+                  />
+                </div>
+
+                <div class="d-flex flex-column col-md-11 search-row">
+                  <button type="submit" class="btn search-button btn-lg">
+                    Search
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </main>
+      </div>
+      <footer id="footer"></footer>
     </div>
-     
-  </div>
-
-</header>
-
-
-<main>
-<div class="container">
-  <div class="d-flex flex-column align-items-center justify-content-center">
-
-    <div class="col-md-5 info-tiles align-items-center text-center">
-      
-          <h2><span class="text-adjust">Create </span>a Setlist</h2>
-          <p>Find headliners performing in your area and aggregate their most popular tracks to your Spotify account </p>
-      
-    </div>
-
-
-
-    
-      
-        <form method="GET" action="/search" class="d-flex flex-column col-md-5 search-form">
-        <div id="zip-row" class="d-flex justify-content-center">
-
-          <div class="d-flex flex-column col-md-5 zip">
-            <label class="" for="inputZip">Zip</label>
-            <input type="text" placeholder="Ex: 80203" name="zip" class="form-control-sm" id="inputZip" required>
-          </div>
-
-          <div class="d-flex flex-column col-md-5">
-            <label class="" for="inputSong">Number of Songs</label>
-            <select id="inputSong" class="form-control-sm" name="topSong">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3" selected>3</option>
-              </select>
-        </div>
-        </div>
-        
-  
-        
-  
-        <div class="d-flex flex-column col-md-11 date-row">
-           
-              <label class="" for="date">Date</label>
-              <input type="text" id="date" name="date" class="form-control-sm" required>
-             
-          </div>
-  
-          <div class="d-flex flex-column col-md-11 search-row">
-              <button type="submit" class="btn search-button btn-lg">Search</button>
-          </div>
-        </form>
-      
-  
-    
-  </div>
-  </div>
-
-
-</main>
-        </div>
-<footer id="footer">
-
-</footer>
-  </div>
-  
-</body>
+  </body>
 </html>

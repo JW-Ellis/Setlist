@@ -1,9 +1,9 @@
-const SpotifyWebApi = require("spotify-web-api-node");
-require("dotenv").config();
+const SpotifyWebApi = require('spotify-web-api-node');
+require('dotenv').config();
 
 const spotifyApi = new SpotifyWebApi({
   clientId: process.env.SPOTIFY_ID,
-  clientSecret: process.env.SPOTIFY_SEC
+  clientSecret: process.env.SPOTIFY_SEC,
 });
 
 exports.spotifyTracksids = async function main(array, num) {
@@ -25,7 +25,7 @@ exports.spotifyTracksids = async function main(array, num) {
           const artistParse = artistPull.body.artists.items[0].id;
           arrayHolder.push(artistParse);
         } catch (e) {
-          console.log("ID Error:", e.message);
+          console.log('ID Error:', e.message);
         }
       })
     );
@@ -35,7 +35,7 @@ exports.spotifyTracksids = async function main(array, num) {
     const topTracks = await Promise.all(
       arrayHolder.map(async id => {
         try {
-          const trackData = await spotifyApi.getArtistTopTracks(id, "US");
+          const trackData = await spotifyApi.getArtistTopTracks(id, 'US');
           const trackParse = trackData.body.tracks;
 
           trackParse.slice(0, num).forEach(track => {
@@ -43,14 +43,14 @@ exports.spotifyTracksids = async function main(array, num) {
             artistTracks.push([track.artists[0].name, track.name]);
           });
         } catch (e) {
-          console.log("Top Track Error:", e.message);
+          console.log('Top Track Error:', e.message);
         }
       })
     );
 
     return [trackIds, artistTracks];
   } catch (e) {
-    console.log("Main Error:", e.message);
+    console.log('Main Error:', e.message);
   }
 };
 
@@ -68,12 +68,12 @@ exports.spotifyPlaylist = async function playlist(
     const meData = await spotifyApi.getMe();
     const userID = meData.body.id;
     const playlistData = await spotifyApi.createPlaylist(userID, playlistName, {
-      public: false
+      public: false,
     });
     const playlistID = playlistData.body.id;
     spotifyApi.addTracksToPlaylist(playlistID, appendID);
   } catch (e) {
-    console.log("Main Error:", e.message);
+    console.log('Main Error:', e.message);
   }
 };
 //Pulls user's username and returns to frontend
@@ -85,6 +85,6 @@ exports.spotifyMe = async function me(token) {
     const userID = meData.body.display_name;
     return userID;
   } catch (e) {
-    console.log("User ID Error: ", e.message);
+    console.log('User ID Error: ', e.message);
   }
 };

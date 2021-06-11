@@ -15,8 +15,7 @@ const SESS_LIFETIME = 3600000;
 let trackIDS;
 require('dotenv').config();
 
-app.set('view engine', 'ejs')
-   .set('trust proxy', 1); //Trust first proxy for express sessions 
+app.set('view engine', 'ejs').set('trust proxy', 1); // Trust first proxy for express sessions
 
 const client_id = process.env.SPOTIFY_ID; // Client ID
 const client_secret = process.env.SPOTIFY_SEC; // Secret
@@ -77,21 +76,14 @@ app.use(
 );
 
 app.get('/', redirectLoggedin, (req, res) => {
-  
-
   res.render('index');
 });
 
 app.get('/loggedin', redirectLoggedout, (req, res) => {
-
- 
-
   res.render('loggedin');
 });
 
 app.get('/playlist', (req, res) => {
-
-
   res.redirect('/');
 });
 
@@ -121,8 +113,6 @@ app.get('/search', async (req, res) => {
     const fMonth = fSplit[0];
     const fDay = fSplit[1];
 
-    
-
     // Pull coordinate data
     const zipData = zipcodes.lookup(userZip);
     const lat = zipData.latitude;
@@ -134,15 +124,13 @@ app.get('/search', async (req, res) => {
     const skCity_response = await fetch(skCity_url);
     const skCitydata = await skCity_response.json();
     const cityId = skCitydata.resultsPage.results.location[0].metroArea.id;
-   
+
     const skEvent_url = `https://api.songkick.com/api/3.0/metro_areas/${cityId}/calendar.json?min_date=${fYear}-${fMonth}-${fDay}&max_date=${fYear}-${fMonth}-${fDay}&apikey=${sk_key}`;
     const skEvent_response = await fetch(skEvent_url);
     const artistData = await skEvent_response.json();
-    
 
     // use JSON artistData to make artist array
     const artistsRaw = artistArray(artistData);
-    const artists = [...new Set(artistsRaw)];
 
     function artistArray() {
       artist = [];
@@ -158,7 +146,7 @@ app.get('/search', async (req, res) => {
           );
         }
       }
-      
+
       return artist;
     }
 
@@ -175,8 +163,6 @@ app.get('/search', async (req, res) => {
       res.redirect('/');
     }
   }
-
- 
 
   if (req.session.userToken) {
     res.render('playlist', { artistPush, userCity });
@@ -205,11 +191,11 @@ app.get('/login', function(req, res) {
 app.get('/callback', function(req, res) {
   // your application requests refresh and access tokens
   // after checking the state parameter
- 
+
   const code = req.query.code || null;
   const state = req.query.state || null;
   const storedState = req.cookies ? req.cookies[stateKey] : null;
-  
+
   if (state === null || state !== storedState) {
     res.redirect(
       `/#${querystring.stringify({
@@ -250,7 +236,6 @@ app.get('/callback', function(req, res) {
 
         // Send client to loggedin page after token is set
         res.render('loggedin');
-
       } else {
         res.redirect(
           `/#${querystring.stringify({

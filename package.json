@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "",
-    "start-dev": "node app.js",
+    "start-dev": "nodemon server/index.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -26,7 +26,7 @@
     "zipcodes": "^8.0.0"
   },
   "devDependencies": {
-    "babel-eslint": "^9.0.0",
+    "babel-eslint": "^10.0.0",
     "eslint": "^7.28.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-base": "^14.2.1",

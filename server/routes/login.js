@@ -8,10 +8,10 @@ router.get('/', async (req, res) => {
 
   res.redirect(
     `https://accounts.spotify.com/authorize?client_id=${
-      process.env.client_id
+      process.env.CLIENT_ID
     }&response_type=code&redirect_uri=${
-      process.env.redirect_uri
-    }&scope=${scope}&show_dialog${true}`
+      process.env.REDIRECT_URI
+    }&scope=${scope}&show_dialog=${true}`
   );
 });
 

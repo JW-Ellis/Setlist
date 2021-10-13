@@ -1,25 +1,55 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import queryString from 'query-string';
+
 import './App.css';
+import { Button } from '@chakra-ui/react';
 
 function App() {
+  const [accessToken, setAccessToken] = useState(null);
+  const [refreshToken, setRefreshToken] = useState(null);
+
+  useEffect(() => {
+    if (window.location.search) {
+      console.log('logged in!!!');
+      const { access_token, refresh_token } = queryString.parse(
+        window.location.search
+      );
+      setAccessToken(access_token);
+      setRefreshToken(refresh_token);
+      console.log(queryString.parse(window.location.search));
+    }
+  }, []);
+
+  const handleLogin = () => {
+    window.location.href = 'http://localhost:8000/login';
+    return null;
+  };
+
+  console.log('AFTER');
+  console.log('access test:', accessToken);
+  console.log('token test: ', refreshToken);
+
+  // console.log('parsed: ', queryString.parse(window.location.search));
+  // console.log('queryString: ', access_token);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>Not logged in</p>
+
+        <Button onClick={handleLogin} colorScheme="blue">
+          Login
+        </Button>
       </header>
     </div>
   );
 }
 
 export default App;
+
+//TODO
+
+//If logged in, show this componenet
+//if logged out, show that
+
+//checker is based on hook?

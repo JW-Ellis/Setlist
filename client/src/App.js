@@ -1,39 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import queryString from 'query-string';
+import React, { useState, useEffect } from "react";
+import queryString from "query-string";
 
-import './App.css';
-import { Button } from '@chakra-ui/react';
+import "./App.css";
+import { Button } from "@chakra-ui/react";
 
 function App() {
   const [accessToken, setAccessToken] = useState(null);
   const [refreshToken, setRefreshToken] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     if (window.location.search) {
-      console.log('logged in!!!');
       const { access_token, refresh_token } = queryString.parse(
         window.location.search
       );
       setAccessToken(access_token);
       setRefreshToken(refresh_token);
-      console.log(queryString.parse(window.location.search));
+      setLoggedIn(true);
     }
   }, []);
 
-  const handleLogin = () => {
-    window.location.href = 'http://localhost:8000/login';
-    return null;
-  };
+  const handleLogin = () =>
+    (window.location.href = "http://localhost:8000/login");
 
-  console.log('AFTER');
-  console.log('access test:', accessToken);
-  console.log('token test: ', refreshToken);
-
-  // console.log('parsed: ', queryString.parse(window.location.search));
-  // console.log('queryString: ', access_token);
-
-  return (
-    <div className="App">
+  const notLogged = () => {
+    return (
       <header className="App-header">
         <p>Not logged in</p>
 
@@ -41,15 +32,22 @@ function App() {
           Login
         </Button>
       </header>
-    </div>
-  );
+    );
+  };
+
+  const logged = () => {
+    return (
+      <header className="App-header">
+        <p>Yes logged in</p>
+
+        <Button onClick={handleLogin} colorScheme="red">
+          Login
+        </Button>
+      </header>
+    );
+  };
+
+  return <div className="App">{loggedIn ? logged() : notLogged()}</div>;
 }
 
 export default App;
-
-//TODO
-
-//If logged in, show this componenet
-//if logged out, show that
-
-//checker is based on hook?

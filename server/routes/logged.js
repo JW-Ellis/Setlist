@@ -25,7 +25,8 @@ router.get('/', async (req, res) => {
     .then(res => res.json())
     .then(data => {
       let query = querystring.stringify(data);
-      res.redirect(`http://localhost:8000/${query}`);
+      console.log('returned data: ', data);
+      res.redirect(`http://localhost:3000/?${query}`);
     });
 });
 

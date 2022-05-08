@@ -5,8 +5,8 @@ import './App.css';
 import { Button } from '@chakra-ui/react';
 
 function App() {
-  const [accessToken, setAccessToken] = useState(null);
-  const [refreshToken, setRefreshToken] = useState(null);
+  const [accessToken, setAccessToken] = useState("");
+  const [refreshToken, setRefreshToken] = useState("");
 
   useEffect(() => {
     if (window.location.search) {
@@ -20,10 +20,7 @@ function App() {
     }
   }, []);
 
-  const handleLogin = () => {
-    window.location.href = 'http://localhost:8000/login';
-    return null;
-  };
+  const handleLogin = () =>  window.location.href = 'http://localhost:8000/login'
 
   console.log('AFTER');
   console.log('access test:', accessToken);

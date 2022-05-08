@@ -1,18 +1,18 @@
 const express = require("express");
-const router = express.Router();
 const fetch = require("node-fetch");
 const querystring = require("querystring");
 const encodeBody = require("../util/encodeBody.js");
+const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI } = require("../util/config");
 
-require("dotenv").config();
+const router = express.Router();
 
 router.get("/", async (req, res) => {
   let body = {
     grant_type: "authorization_code",
     code: req.query.code,
-    client_id: process.env.CLIENT_ID,
-    client_secret: process.env.CLIENT_SEC,
-    redirect_uri: process.env.REDIRECT_URI,
+    client_id: CLIENT_ID,
+    client_secret: CLIENT_SECRET,
+    redirect_uri: REDIRECT_URI,
   };
   await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",

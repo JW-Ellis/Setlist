@@ -1,5 +1,5 @@
 node_modules/
 .env
-web-api-auth-examples/ 
-.prettierrc.js
+.prettierrc
 .vscode
+.gitignore

@@ -20,8 +20,10 @@ function App() {
     }
   }, []);
 
-  const handleLogin = () =>
-    (window.location.href = "http://localhost:8000/login");
+console.log("accessToken: ", accessToken)
+console.log("refreshToken: ", refreshToken)
+
+  const handleLogin = () =>  window.location.href = 'http://localhost:8000/login'
 
   const notLogged = () => {
     return (

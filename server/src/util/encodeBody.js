@@ -1,7 +1,7 @@
-const encodeBody = body => {
+const encodeBody = (body) => {
   return Object.keys(body)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(body[key]))
-    .join('&');
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(body[key]))
+    .join("&");
 };
 
 module.exports = encodeBody;

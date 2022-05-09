@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
-import queryString from "query-string";
 
 import "./App.css";
 import { Button } from "@chakra-ui/react";
 
 function App() {
-  const [accessToken, setAccessToken] = useState(null);
-  const [refreshToken, setRefreshToken] = useState(null);
+  const [accessToken, setAccessToken] = useState("");
+  const [refreshToken, setRefreshToken] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    if (window.location.search) {
-      const { access_token, refresh_token } = queryString.parse(
-        window.location.search
-      );
-      setAccessToken(access_token);
-      setRefreshToken(refresh_token);
+    const paramObject = new URLSearchParams(window.location.search)
+   
+    if (paramObject.has("access_token") && paramObject.has("refresh_token")) {
+      setAccessToken(paramObject.get("access_token"));
+      setRefreshToken(paramObject.get("refresh_token"));
       setLoggedIn(true);
     }
   }, []);

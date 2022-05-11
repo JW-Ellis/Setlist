@@ -9,8 +9,8 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    const paramObject = new URLSearchParams(window.location.search)
-   
+    const paramObject = new URLSearchParams(window.location.search);
+
     if (paramObject.has("access_token") && paramObject.has("refresh_token")) {
       setAccessToken(paramObject.get("access_token"));
       setRefreshToken(paramObject.get("refresh_token"));
@@ -18,10 +18,11 @@ function App() {
     }
   }, []);
 
-console.log("accessToken: ", accessToken)
-console.log("refreshToken: ", refreshToken)
+  console.log("accessToken: ", accessToken);
+  console.log("refreshToken: ", refreshToken);
 
-  const handleLogin = () =>  window.location.href = 'http://localhost:8000/login'
+  const handleLogin = () =>
+    (window.location.href = "http://localhost:8000/login");
 
   const notLogged = () => {
     return (

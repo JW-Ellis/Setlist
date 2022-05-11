@@ -1,0 +1,18 @@
+{
+  "env": {
+    "node": true,
+    "commonjs": true,
+    "es2021": true
+  },
+  "extends": ["eslint:recommended", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "requireConfigFile": false
+  },
+  "rules": {
+    "quotes": ["error", "double"],
+    "no-unused-vars": 1
+  },
+  "ignorePatterns": ["node_modules/"]
+}

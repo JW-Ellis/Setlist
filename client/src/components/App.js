@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 import "./App.css";
+import Search from "../components/Search";
+
 import { Button } from "@chakra-ui/react";
 
-function App() {
+const App = () => {
   const [accessToken, setAccessToken] = useState("");
   const [refreshToken, setRefreshToken] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
@@ -20,35 +22,21 @@ function App() {
 
   console.log("accessToken: ", accessToken);
   console.log("refreshToken: ", refreshToken);
+  console.log("loggedIn: ", loggedIn);
 
   const handleLogin = () =>
     (window.location.href = "http://localhost:8000/login");
 
-  const notLogged = () => {
-    return (
-      <header className="App-header">
-        <p>Not logged in</p>
+  return (
+    <header className="App-header">
+      <p>Not logged in</p>
 
-        <Button onClick={handleLogin} colorScheme="blue">
-          Login
-        </Button>
-      </header>
-    );
-  };
-
-  const logged = () => {
-    return (
-      <header className="App-header">
-        <p>Yes logged in</p>
-
-        <Button onClick={handleLogin} colorScheme="red">
-          Login
-        </Button>
-      </header>
-    );
-  };
-
-  return <div className="App">{loggedIn ? logged() : notLogged()}</div>;
-}
+      <Search />
+      <Button onClick={handleLogin} colorScheme="blue">
+        Login
+      </Button>
+    </header>
+  );
+};
 
 export default App;

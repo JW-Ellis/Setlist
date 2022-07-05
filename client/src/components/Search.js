@@ -1,77 +1,101 @@
 import React, { useState } from "react";
-import { Formik, Form, Field } from "formik";
 
-import {
-  VStack,
-  Box,
-  FormControl,
-  Input,
-  FormLabel,
-  Button,
-  FormErrorMessage,
-} from "@chakra-ui/react";
+// import createPlaylist from "../util/createPlaylist";
 import DatePicker from "react-datepicker";
+import { Button, Form } from "semantic-ui-react";
+
 import "react-datepicker/dist/react-datepicker.css";
+import "./Search.css";
 
 const Search = () => {
-  const [startDate, setStartDate] = useState(new Date());
+  const [date, setDate] = useState(new Date());
+  const [zipCode, setZipCode] = useState("");
+  const [zipCodeError, setZipCodeError] = useState(null);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
 
-  const validateName = (value) => {
-    let error;
-    if (!value) {
-      error = "Name is required";
-    } else if (value.toLowerCase() !== "naruto") {
-      error = "Jeez! You're not a fan 😱";
+  const zipCodeValidation = (zipCode) => /^([0-9]{5})$/.test(zipCode);
+
+  const zipCodeHandler = (zipCode) => {
+    setZipCode(zipCode);
+
+    if (!zipCodeValidation(zipCode) && zipCodeError === null) {
+      setButtonDisabled(true);
+      setZipCodeError("Please enter a valid zip code");
+    } else if (!zipCodeValidation(zipCode)) {
+      return;
+    } else if (zipCodeError !== null) {
+      setButtonDisabled(false);
+      setZipCodeError(null);
     }
-    return error;
+  };
+
+  const addDays = (days) => {
+    const date = new Date();
+    date.setDate(date.getDate() + days);
+
+    return date;
+  };
+
+  const handleSubmit = async () => {
+    // set an isLoading
+
+    try {
+      const response = await fetch(
+        `http://localhost:8000/playlist?zipCode=${encodeURIComponent(
+          zipCode
+        )}&date=${encodeURIComponent(date)}`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
+      console.log("REsuL: ", response);
+
+      // const result = await response.json();
+    } catch (error) {
+      console.error("error: ", error);
+    }
+
+    if (!zipCodeError) {
+      console.log("SUBMITTED: ");
+      console.log("DATE: ", date);
+      console.log("ZIP: ", zipCode);
+    }
   };
 
   return (
-    <VStack spacing="24px">
-      <DatePicker
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-      />
-      <Formik
-        initialValues={{ name: "Sasuke" }}
-        onSubmit={(values, actions) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            actions.setSubmitting(false);
-          }, 1000);
-        }}
-      >
-        {({ isSubmitting }) => (
-          <Form>
-            <Field name="name" validate={validateName}>
-              {({ field, form }) => (
-                <FormControl isInvalid={form.errors.name && form.touched.name}>
-                  <FormLabel htmlFor="name">First name</FormLabel>
-                  <Input {...field} id="name" placeholder="name" />
-                  <FormErrorMessage>{form.errors.name}</FormErrorMessage>
-                </FormControl>
-              )}
-            </Field>
-            <Button
-              mt={4}
-              colorScheme="teal"
-              isLoading={isSubmitting}
-              type="submit"
-            >
-              Submit
-            </Button>
-          </Form>
-        )}
-      </Formik>
-      <Box w="40px" h="40px" bg="pink.100">
-        3
-      </Box>
-    </VStack>
+    <Form>
+      <Form.Group className="input-form">
+        <Form.Field>
+          <label>Select a Date</label>
+          <DatePicker
+            selected={date}
+            onChange={(date) => setDate(date)}
+            minDate={new Date()}
+            maxDate={addDays(60)}
+          />
+        </Form.Field>
+        <Form.Input
+          error={zipCodeError}
+          label="Zip Code"
+          placeholder="Zip Code"
+          name="zipCode"
+          value={zipCode}
+          onChange={(event) => zipCodeHandler(event.target.value)}
+        />
+        <Button
+          disabled={buttonDisabled}
+          size="medium"
+          type="submit"
+          onClick={() => handleSubmit()}
+        >
+          Submit
+        </Button>
+      </Form.Group>
+    </Form>
   );
 };
 
 export default Search;
-
-// date
-// zip code
-// butto

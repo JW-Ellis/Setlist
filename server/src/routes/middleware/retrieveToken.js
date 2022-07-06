@@ -4,6 +4,10 @@ const encodeBody = require("../../util/encodeBody");
 const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI } = require("../../util/config");
 
 const retrieveToken = async (req, res) => {
+  if (req.query.error) {
+    res.redirect("http://localhost:3000");
+  }
+
   const body = {
     grant_type: "authorization_code",
     code: req.query.code,
@@ -24,11 +28,15 @@ const retrieveToken = async (req, res) => {
         body: encodeBody(body),
       }
     );
+    const { access_token, refresh_token, expires_in } =
+      await tokenResponse.json();
 
-    const jsonToken = await tokenResponse.json();
-    const searchParamsString = new URLSearchParams(jsonToken).toString();
-
-    res.redirect(`http://localhost:3000/?${searchParamsString}`);
+    res
+      .cookie("accessToken", access_token, {
+        expires: new Date(Date.now() + 1000 * expires_in), // cookie will be removed after 1 hour
+      })
+      .cookie("refreshToken", refresh_token)
+      .redirect("http://localhost:3000");
   } catch (err) {
     console.error("An error occured while fetching Spotify creds: ", err);
   }

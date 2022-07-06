@@ -8,16 +8,21 @@ const getSetlistData = async (req) => {
   const clientToken = await getAccessToken();
 
   try {
-    const artistArray = await getArtists(zipCode, gteDate, lteDate);
+    const returnedArtists = await getArtists(zipCode, gteDate, lteDate);
+
+    if (returnedArtists.status === 400) {
+      return { location: "Location not found!" };
+    }
 
     const artistIDs = await Promise.all(
-      artistArray.map((band) => getArtistID(band, clientToken))
+      returnedArtists.artistArray.map((band) => getArtistID(band, clientToken))
     );
 
     const setlistData = async () => {
       const topTracks = [];
 
       for (let index = 0; index < artistIDs.length; index++) {
+        // Skip any artists that Spotify cannot find
         if (!artistIDs[index]) {
           continue;
         }
@@ -32,7 +37,7 @@ const getSetlistData = async (req) => {
         });
       }
 
-      return topTracks;
+      return { topTracks, location: returnedArtists.location };
     };
 
     const data = await setlistData();

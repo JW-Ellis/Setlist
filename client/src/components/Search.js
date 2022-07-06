@@ -39,29 +39,29 @@ const Search = () => {
   const handleSubmit = async () => {
     // set an isLoading
 
+    let tomorrow = new Date(date);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
     try {
       const response = await fetch(
         `http://localhost:8000/playlist?zipCode=${encodeURIComponent(
           zipCode
-        )}&date=${encodeURIComponent(date)}`,
+        )}&gteDate=${encodeURIComponent(
+          date.toISOString()
+        )}&lteDate=${encodeURIComponent(tomorrow.toISOString())}`,
         {
           method: "GET",
           headers: {
             Accept: "application/json",
           },
+          credentials: "include",
         }
       );
-      console.log("REsuL: ", response);
 
-      // const result = await response.json();
+      const result = await response.json();
+      console.log("RESULT: ", result);
     } catch (error) {
       console.error("error: ", error);
-    }
-
-    if (!zipCodeError) {
-      console.log("SUBMITTED: ");
-      console.log("DATE: ", date);
-      console.log("ZIP: ", zipCode);
     }
   };
 

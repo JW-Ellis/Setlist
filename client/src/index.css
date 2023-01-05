@@ -12,3 +12,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+@font-face {
+  font-family: "VCR_FONT";
+  src: url("./fonts/VCR_OSD_MONO_1.001.ttf") format("truetype");
+  /* font-weight: normal;
+  font-style: normal; */
+}
+
+/* @font-face {
+  font-family: "cutiveregular";
+  src: url("../fonts/cutive-regular-webfont.woff2") format("woff2"),
+    url("../fonts/cutive-regular-webfont.woff") format("woff"),
+    url("../fonts/Cutive-Regular");
+  font-weight: normal;
+  font-style: normal;
+} */
+
+:root {
+  --primary-color: #067fd6;
+  --secondary-color: #d547d9;
+  --tertiary-color: #2b2b2b;
+}

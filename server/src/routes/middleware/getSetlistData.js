@@ -9,7 +9,10 @@ const getSetlistData = async (req) => {
 
   try {
     const returnedArtists = await getArtists(zipCode, gteDate, lteDate);
-
+    // const returnedArtists = {
+    //   location: "big town",
+    //   artistArray: ["Lords of 52nd Street"],
+    // };
     if (returnedArtists.status === 400) {
       return { location: "Location not found!" };
     }

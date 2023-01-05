@@ -18,7 +18,7 @@ const getArtistID = async (artist, token) => {
 
     const parsedResponse = await spotifyResponse.json();
 
-    if (parsedResponse.artists.items[0] === undefined) {
+    if (parsedResponse.artists.items.length === 0) {
       return;
     } else {
       return {
@@ -27,7 +27,7 @@ const getArtistID = async (artist, token) => {
       };
     }
   } catch (error) {
-    console.error("An error occured while fetching artist IDs: ", error);
+    console.error(`An error occured while fetching ${artist} ID: `, error);
   }
 };
 

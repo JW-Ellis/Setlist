@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 // import createPlaylist from "../util/createPlaylist";
 import DatePicker from "react-datepicker";
@@ -7,7 +8,7 @@ import { Button, Form } from "semantic-ui-react";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Search.css";
 
-const Search = () => {
+const Search = ({ setSetlistData }) => {
   const [date, setDate] = useState(new Date());
   const [zipCode, setZipCode] = useState("");
   const [zipCodeError, setZipCodeError] = useState(null);
@@ -59,9 +60,10 @@ const Search = () => {
       );
 
       const result = await response.json();
-      console.log("RESULT: ", result);
+
+      setSetlistData(result);
     } catch (error) {
-      console.error("error: ", error);
+      console.error("An error occured while creating a Setlist: ", error);
     }
   };
 
@@ -96,6 +98,10 @@ const Search = () => {
       </Form.Group>
     </Form>
   );
+};
+
+Search.propTypes = {
+  setSetlistData: PropTypes.func,
 };
 
 export default Search;
